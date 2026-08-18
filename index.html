@@ -1,625 +1,285 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<!doctype html>
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matrimonial Profile | Rohan Sharma</title>
-    
-    <!-- Fonts -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Aman Kumar Maurya — Matrimonial Profile</title>
+    <meta name="description" content="Matrimonial profile of Aman Kumar Maurya from Pratapgarh, Uttar Pradesh.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#fdf8f6',
-                            100: '#f2e8e5',
-                            200: '#eaddd7',
-                            300: '#e0cec7',
-                            400: '#d2bab0',
-                            500: '#a17a69', // Main brand color (warm taupe/gold)
-                            600: '#8c6656',
-                            700: '#6b4c3f',
-                            800: '#4d352b',
-                            900: '#33221b',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        /* Custom Styles for subtle animations and printing */
-        body {
-            background-color: #fcfaf8;
-            color: #33221b;
-        }
-        
-        .fade-in {
-            animation: fadeIn 1s ease-in forwards;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Delay utilities for staggered animations */
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
-        .delay-300 { animation-delay: 0.3s; }
-        
-        .glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-        }
-
-        /* Print optimization for when users try to save as PDF */
-        @media print {
-            nav, .no-print, .contact-form { display: none !important; }
-            body { background-color: white; }
-            .glass-card { box-shadow: none; border: 1px solid #eee; }
-            .print-break { page-break-before: always; }
-        }
-    </style>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,480;0,9..144,600;1,9..144,420;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="font-sans antialiased text-brand-900 selection:bg-brand-200 selection:text-brand-900 relative">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/80 backdrop-blur-md border-b border-brand-100" id="navbar">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <i class="fa-solid fa-rings-wedding text-brand-500 text-2xl"></i>
-                    <span class="font-serif font-semibold text-xl tracking-wide text-brand-800">Rohan's Profile</span>
-                </div>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#about" class="text-sm font-medium text-brand-700 hover:text-brand-500 transition-colors">About</a>
-                    <a href="#education" class="text-sm font-medium text-brand-700 hover:text-brand-500 transition-colors">Career</a>
-                    <a href="#family" class="text-sm font-medium text-brand-700 hover:text-brand-500 transition-colors">Family</a>
-                    <a href="#preferences" class="text-sm font-medium text-brand-700 hover:text-brand-500 transition-colors">Preferences</a>
-                    <button onclick="window.print()" class="no-print bg-brand-500 hover:bg-brand-600 text-white px-5 py-2 rounded-full text-sm font-medium transition-all shadow-sm hover:shadow-md flex items-center gap-2">
-                        <i class="fa-solid fa-download"></i> Save as PDF
-                    </button>
-                </div>
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
 
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-brand-800 hover:text-brand-500 focus:outline-none p-2">
-                        <i class="fa-solid fa-bars text-2xl"></i>
-                    </button>
-                </div>
+    <header class="topbar" id="topbar">
+        <div class="topbar-inner">
+            <div class="wordmark">Aman Kumar Maurya<small>Matrimonial Profile</small></div>
+            <nav class="links">
+                <button data-goto="about">About</button>
+                <button data-goto="career">Career</button>
+                <button data-goto="family">Family</button>
+                <button data-goto="gallery">Gallery</button>
+            </nav>
+            <div class="topbar-actions">
+                <a class="primary" data-goto="contact" href="#contact">Get in touch</a>
+                <button class="hamburger" id="hamburger" aria-label="Open menu"
+                    aria-expanded="false"><span></span><span></span><span></span></button>
             </div>
         </div>
+    </header>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-brand-100 absolute w-full shadow-lg">
-            <div class="px-4 pt-2 pb-6 space-y-1">
-                <a href="#about" class="block px-3 py-3 text-base font-medium text-brand-700 hover:bg-brand-50 rounded-md">About</a>
-                <a href="#education" class="block px-3 py-3 text-base font-medium text-brand-700 hover:bg-brand-50 rounded-md">Career</a>
-                <a href="#family" class="block px-3 py-3 text-base font-medium text-brand-700 hover:bg-brand-50 rounded-md">Family</a>
-                <a href="#preferences" class="block px-3 py-3 text-base font-medium text-brand-700 hover:bg-brand-50 rounded-md">Preferences</a>
-                <button onclick="window.print()" class="w-full text-left mt-4 block px-3 py-3 text-base font-medium text-white bg-brand-500 rounded-md">
-                    <i class="fa-solid fa-download mr-2"></i> Save Biodata
-                </button>
-            </div>
-        </div>
-    </nav>
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-top"><button class="mobile-nav-close" id="mobileNavClose"
+                aria-label="Close menu">×</button></div>
+        <nav>
+            <button data-goto="about">About</button>
+            <button data-goto="career">Career</button>
+            <button data-goto="family">Family</button>
+            <button data-goto="gallery">Gallery</button>
+            <a class="primary" href="#contact" data-goto="contact">Get in touch</a>
+        </nav>
+    </div>
 
-    <!-- Hero Section -->
-    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-        <div class="flex flex-col-reverse md:flex-row items-center gap-12">
-            
-            <!-- Text Content -->
-            <div class="w-full md:w-3/5 text-center md:text-left fade-in">
-                <div class="inline-block px-4 py-1.5 rounded-full bg-brand-100 text-brand-700 font-medium text-sm mb-6 border border-brand-200">
-                    <i class="fa-solid fa-om mr-2"></i> Seeking a meaningful connection
+    <main>
+        <section class="hero" id="top">
+            <div class="petal-field" id="petalField" aria-hidden="true"></div>
+            <div class="hero-copy">
+                <div class="eyebrow eyebrow-hero">Pratapgarh, Uttar Pradesh</div>
+                <h1><span class="line"><span class="line-inner">Aman Kumar</span></span><br><span class="line"><span
+                            class="line-inner"><em>Maurya</em></span></span></h1>
+                <p class="hero-lead">A steady government career, a close-knit family, and a life built around simple
+                    values — shared here with the respect it deserves.</p>
+                <div class="chips">
+                    <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M12 2v20M2 12h20" />
+                        </svg>168 cm · Healthy build</span>
+                    <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <rect x="3" y="7" width="18" height="13" rx="2" />
+                            <path d="M8 7V5a4 4 0 0 1 8 0v2" />
+                        </svg>Locopilot, Indian Railways</span>
+                    <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <circle cx="12" cy="12" r="9" />
+                        </svg>Hindu · Maurya</span>
                 </div>
-                <h1 class="font-serif text-5xl md:text-6xl text-brand-900 mb-4 leading-tight">
-                    Rohan Sharma
-                </h1>
-                <p class="text-xl text-brand-600 font-light mb-6">
-                    Software Engineer • 28 Years • Delhi, India
-                </p>
-                <p class="text-brand-700 leading-relaxed mb-8 max-w-2xl text-lg">
-                    Welcome to my profile. I am a tech professional with a deep appreciation for our cultural roots. I believe in balancing modern ambitions with traditional family values. Looking for a partner to share life's beautiful journey, built on mutual respect, understanding, and friendship.
-                </p>
-                
-                <div class="flex flex-wrap gap-4 justify-center md:justify-start">
-                    <a href="#contact" class="bg-brand-500 hover:bg-brand-600 text-white px-8 py-3 rounded-full font-medium transition-all shadow-md hover:shadow-lg">
-                        Get in Touch
+                <div class="hero-actions">
+                    <a class="primary" href="tel:+916390759204">Call the family</a>
+                    <a class="ghost" href="#gallery" data-goto="gallery">View gallery</a>
+                </div>
+            </div>
+            <div class="portrait-stage">
+                <svg class="garland" viewBox="0 0 420 90">
+                    <path d="M10 20 Q60 90 110 30 T210 30 T310 30 T410 20" />
+                    <circle cx="30" cy="34" r="5" fill="#dfa03d" />
+                    <circle cx="70" cy="66" r="5" fill="#dfa03d" />
+                    <circle cx="110" cy="30" r="5" fill="#dfa03d" />
+                    <circle cx="160" cy="52" r="5" fill="#dfa03d" />
+                    <circle cx="210" cy="30" r="5" fill="#dfa03d" />
+                    <circle cx="260" cy="52" r="5" fill="#dfa03d" />
+                    <circle cx="310" cy="30" r="5" fill="#dfa03d" />
+                    <circle cx="360" cy="52" r="5" fill="#dfa03d" />
+                </svg>
+                <div class="portrait-back"></div>
+                <div class="portrait-card">
+                    <img src="./aman1.jpeg"
+                        alt="Marigold flowers, decorative" loading="eager">
+                    <div class="portrait-wash"></div>
+                    <div class="portrait-label"><small>Family portrait to follow</small><strong>Aman Kumar</strong>
+                    </div>
+                </div>
+                <div class="stamp">rooted<br>&amp; ready</div>
+            </div>
+            <div class="scroll-cue"><span>Scroll</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M12 5v14M5 12l7 7 7-7" />
+                </svg></div>
+        </section>
+
+        <section class="section about" id="about">
+            <div class="inner about-wrap">
+                <div class="reveal">
+                    <div class="section-title" style="margin-bottom:26px">
+                        <div class="eyebrow">01 — The essentials</div>
+                        <h2>A little about Aman</h2>
+                    </div>
+                    <p class="quote">"I believe a good life is made of steady work, family laughter and the courage to
+                        keep growing."</p>
+                </div>
+                <div class="reveal">
+                    <div class="detail-list">
+                        <div class="detail"><span>Height &amp; build</span><strong>168 cm · Healthy build</strong></div>
+                        <div class="detail"><span>Religion &amp; caste</span><strong>Hindu · Maurya</strong></div>
+                        <div class="detail"><span>Languages</span><strong>Hindi &amp; English</strong></div>
+                        <div class="detail"><span>Based in</span><strong>Pratapgarh, Uttar Pradesh</strong></div>
+                        <div class="detail"><span>Education</span><strong>Graduate</strong></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section work" id="career">
+            <div class="inner">
+                <div class="section-title reveal">
+                    <div class="eyebrow">02 — Work &amp; learning</div>
+                    <h2>A grounded ambition</h2>
+                    <p>A steady professional life, with room for curiosity, responsibility and the next chapter.</p>
+                </div>
+                <div class="work-grid reveal-stagger">
+                    <article class="work-card">
+                        <div class="number">01</div>
+                        <h3>Locopilot (ALP)</h3>
+                        <p>Indian Railways · Government of India</p>
+                        <span class="pill">Secure government profession</span>
+                    </article>
+                    <article class="work-card">
+                        <div class="number">02</div>
+                        <h3>Graduate</h3>
+                        <p>Completed formal graduation with a practical outlook and an eagerness to keep learning.</p>
+                        <span class="pill">Education completed</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section family" id="family">
+            <div class="inner family-grid">
+                <div class="reveal">
+                    <div class="section-title" style="margin-bottom:0">
+                        <div class="eyebrow">03 — Where he comes from</div>
+                        <h2>Family, at the centre</h2>
+                        <p>A respectable and cultured Maurya family residing in Pratapgarh, holding strong moral values
+                            with a modern outlook on life.</p>
+                    </div>
+                    <div class="family-quote">"The people we come home to shape the way we show up in the world."</div>
+                </div>
+                <div class="family-cards reveal-stagger">
+                    <div class="family-card"><small>Father</small><strong>Mr. Sundar Lal Maurya</strong></div>
+                    <div class="family-card"><small>Mother</small><strong>Mrs. Priti Devi</strong></div>
+                    <div class="family-card"><small>Siblings</small><strong>Details on contact</strong></div>
+                    <div class="family-card"><small>Family home</small><strong>Manikpur Funda, Pratapgarh</strong></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section values">
+            <div class="inner">
+                <div class="section-title reveal">
+                    <div class="eyebrow">04 — The everyday</div>
+                    <h2>The way he sees partnership</h2>
+                    <p>Not a list of claims — just a few values that make a relationship feel considered, warm and real.
+                    </p>
+                </div>
+                <div class="value-grid reveal-stagger">
+                    <div class="value">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                            <path
+                                d="M12 21s-7-4.35-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.65-9.5 9-9.5 9z" />
+                        </svg>
+                        <h3>Tradition, thoughtfully</h3>
+                        <p>Deep respect for family, rituals and the wisdom carried through generations.</p>
+                    </div>
+                    <div class="value">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                            <circle cx="12" cy="12" r="9" />
+                            <path d="M8 12h8M12 8v8" />
+                        </svg>
+                        <h3>Modern outlook</h3>
+                        <p>Open communication, shared decisions and space for two people to keep becoming themselves.
+                        </p>
+                    </div>
+                    <div class="value">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                            <path d="M12 3v4M3 12h4M17 12h4M12 17v4" />
+                            <circle cx="12" cy="12" r="4" />
+                        </svg>
+                        <h3>A steady heart</h3>
+                        <p>Reliability in ordinary days — the quality that quietly makes a home.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section gallery" id="gallery">
+            <div class="inner">
+                <div class="gallery-head reveal">
+                    <div class="section-title" style="margin-bottom:0">
+                        <div class="eyebrow">05 — A glimpse</div>
+                        <h2>Moments in between</h2>
+                        <p>A small collection of the everyday — rituals, the railway, home ground and festival colour.
+                            Family photographs will be added when ready.</p>
+                    </div>
+                    <div class="filters" id="filters">
+                        <button class="filter active" data-filter="All">All</button>
+                        <button class="filter" data-filter="Traditions">Traditions</button>
+                        <button class="filter" data-filter="Journey">Journey</button>
+                        <button class="filter" data-filter="Heritage">Heritage</button>
+                        <button class="filter" data-filter="Festivities">Festivities</button>
+                    </div>
+                </div>
+                <div class="gallery-grid" id="galleryGrid"></div>
+            </div>
+        </section>
+
+        <section class="section contact" id="contact">
+            <div class="inner contact-wrap reveal">
+                <div class="eyebrow" style="justify-content:center">06 — A warm hello</div>
+                <h2>Maybe this is where your story meets his.</h2>
+                <p>If you find this profile suitable and would like to proceed further, please reach out to the family
+                    directly by phone or email. A thoughtful beginning is always welcome.</p>
+                <div class="contact-cards">
+                    <a class="contact-card" href="tel:+916390759204">
+                        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg></span>
+                        <div><small>Call the family</small><strong>+91 63907 59204</strong><span>Also on WhatsApp</span>
+                        </div>
                     </a>
-                    <a href="#about" class="bg-white border border-brand-300 text-brand-700 hover:bg-brand-50 px-8 py-3 rounded-full font-medium transition-all">
-                        Read More
+                    <a class="contact-card" href="mailto:nishantmaurya214216@gmail.com">
+                        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16v16H4z" />
+                                <path d="m4 6 8 7 8-7" />
+                            </svg></span>
+                        <div><small>Send an email</small><strong>nishantmaurya214216@gmail.com</strong><span>Pratapgarh,
+                                Uttar Pradesh</span></div>
                     </a>
                 </div>
+                <div class="contact-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M12 8v4l3 2" />
+                    </svg>Family usually responds within a day</div>
             </div>
+        </section>
+    </main>
 
-            <!-- Profile Image -->
-            <div class="w-full md:w-2/5 flex justify-center fade-in delay-200">
-                <div class="relative w-64 h-64 md:w-80 md:h-80">
-                    <!-- Decorative border -->
-                    <div class="absolute inset-0 border-2 border-brand-400 rounded-[2rem] transform rotate-6 scale-105 transition-transform hover:rotate-12 duration-500"></div>
-                    <div class="absolute inset-0 bg-brand-200 rounded-[2rem] transform -rotate-3 scale-105"></div>
-                    <!-- Image -->
-                    <img src="https://placehold.co/600x800/a17a69/ffffff?text=Rohan's\nPhoto" alt="Rohan Sharma" class="absolute inset-0 w-full h-full object-cover rounded-[2rem] shadow-xl z-10">
-                </div>
+    <footer><span>Aman Kumar Maurya · Matrimonial profile</span><span>Made with respect · Pratapgarh, UP</span></footer>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+        <div class="lightbox-inner">
+            <button class="lightbox-close" id="close" aria-label="Close">×</button>
+            <button class="lightbox-arrow left" id="prev" aria-label="Previous">←</button>
+            <button class="lightbox-arrow right" id="next" aria-label="Next">→</button>
+            <div class="lightbox-art" id="lightboxArt">
+                <div class="lb-spinner" id="lbSpinner"></div>
+                <img id="lightboxImage" alt="">
             </div>
+            <div class="lightbox-meta">
+                <span><span class="lb-title" id="lightboxTitle"></span><span class="lb-note"
+                        id="lightboxNote"></span></span>
+                <span id="lightboxCount"></span>
+            </div>
+            <div class="lb-thumbs" id="lbThumbs"></div>
         </div>
-    </section>
+    </div>
 
-    <!-- Personal Details (At a Glance) -->
-    <section id="about" class="py-16 bg-white border-y border-brand-100">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 fade-in">
-                <h2 class="font-serif text-3xl md:text-4xl text-brand-900 mb-4 relative inline-block">
-                    Personal Details
-                    <span class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-12 h-1 bg-brand-400 rounded-full"></span>
-                </h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 fade-in delay-100">
-                <!-- Detail Card -->
-                <div class="glass-card p-6 rounded-2xl flex items-start gap-4 hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-500 shrink-0">
-                        <i class="fa-solid fa-calendar-days text-xl"></i>
-                    </div>
-                    <div>
-                        <p class="text-sm text-brand-500 font-medium uppercase tracking-wider mb-1">Age & DOB</p>
-                        <p class="text-lg font-semibold text-brand-800">28 Years</p>
-                        <p class="text-brand-600 text-sm">15th August 1998</p>
-                    </div>
-                </div>
-
-                <!-- Detail Card -->
-                <div class="glass-card p-6 rounded-2xl flex items-start gap-4 hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-500 shrink-0">
-                        <i class="fa-solid fa-ruler-vertical text-xl"></i>
-                    </div>
-                    <div>
-                        <p class="text-sm text-brand-500 font-medium uppercase tracking-wider mb-1">Physical Traits</p>
-                        <p class="text-lg font-semibold text-brand-800">5' 11" (180 cm)</p>
-                        <p class="text-brand-600 text-sm">Average Build, Non-Smoker</p>
-                    </div>
-                </div>
-
-                <!-- Detail Card -->
-                <div class="glass-card p-6 rounded-2xl flex items-start gap-4 hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-500 shrink-0">
-                        <i class="fa-solid fa-place-of-worship text-xl"></i>
-                    </div>
-                    <div>
-                        <p class="text-sm text-brand-500 font-medium uppercase tracking-wider mb-1">Religion & Background</p>
-                        <p class="text-lg font-semibold text-brand-800">Hindu, Brahmin</p>
-                        <p class="text-brand-600 text-sm">Gotra: Bhardwaj</p>
-                    </div>
-                </div>
-
-                <!-- Detail Card -->
-                <div class="glass-card p-6 rounded-2xl flex items-start gap-4 hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-500 shrink-0">
-                        <i class="fa-solid fa-language text-xl"></i>
-                    </div>
-                    <div>
-                        <p class="text-sm text-brand-500 font-medium uppercase tracking-wider mb-1">Languages</p>
-                        <p class="text-lg font-semibold text-brand-800">Hindi & English</p>
-                        <p class="text-brand-600 text-sm">Mother Tongue: Hindi</p>
-                    </div>
-                </div>
-
-                <!-- Detail Card -->
-                <div class="glass-card p-6 rounded-2xl flex items-start gap-4 hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-500 shrink-0">
-                        <i class="fa-solid fa-location-dot text-xl"></i>
-                    </div>
-                    <div>
-                        <p class="text-sm text-brand-500 font-medium uppercase tracking-wider mb-1">Location</p>
-                        <p class="text-lg font-semibold text-brand-800">South Delhi, India</p>
-                        <p class="text-brand-600 text-sm">Open to relocation: Yes</p>
-                    </div>
-                </div>
-
-                <!-- Detail Card -->
-                <div class="glass-card p-6 rounded-2xl flex items-start gap-4 hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-500 shrink-0">
-                        <i class="fa-solid fa-star text-xl"></i>
-                    </div>
-                    <div>
-                        <p class="text-sm text-brand-500 font-medium uppercase tracking-wider mb-1">Horoscope</p>
-                        <p class="text-lg font-semibold text-brand-800">Manglik: No</p>
-                        <p class="text-brand-600 text-sm">Time of Birth: 10:30 AM, Delhi</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education & Career -->
-    <section id="education" class="py-20 bg-brand-50 relative overflow-hidden">
-        <!-- Background Pattern -->
-        <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#a17a69 1px, transparent 1px); background-size: 20px 20px;"></div>
-        
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="flex flex-col lg:flex-row gap-12">
-                
-                <!-- Education Column -->
-                <div class="flex-1 fade-in">
-                    <div class="flex items-center gap-3 mb-8">
-                        <div class="w-10 h-10 rounded-full bg-brand-500 text-white flex items-center justify-center">
-                            <i class="fa-solid fa-graduation-cap"></i>
-                        </div>
-                        <h2 class="font-serif text-3xl text-brand-900">Education</h2>
-                    </div>
-
-                    <div class="space-y-6">
-                        <div class="glass-card p-6 rounded-2xl border-l-4 border-l-brand-500">
-                            <h3 class="text-xl font-semibold text-brand-800 mb-1">B.Tech in Computer Science</h3>
-                            <p class="text-brand-600 mb-2">Indian Institute of Technology (IIT), Delhi</p>
-                            <span class="inline-block bg-brand-100 text-brand-700 text-xs px-3 py-1 rounded-full font-medium">Graduated 2020</span>
-                        </div>
-                        <div class="glass-card p-6 rounded-2xl border-l-4 border-l-brand-400">
-                            <h3 class="text-xl font-semibold text-brand-800 mb-1">Higher Secondary (XII)</h3>
-                            <p class="text-brand-600 mb-2">Delhi Public School, R.K. Puram</p>
-                            <span class="inline-block bg-brand-100 text-brand-700 text-xs px-3 py-1 rounded-full font-medium">Class of 2016 • Science Stream</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Career Column -->
-                <div class="flex-1 fade-in delay-200">
-                    <div class="flex items-center gap-3 mb-8">
-                        <div class="w-10 h-10 rounded-full bg-brand-500 text-white flex items-center justify-center">
-                            <i class="fa-solid fa-briefcase"></i>
-                        </div>
-                        <h2 class="font-serif text-3xl text-brand-900">Profession</h2>
-                    </div>
-
-                    <div class="space-y-6">
-                        <div class="glass-card p-6 rounded-2xl border-l-4 border-l-brand-500">
-                            <h3 class="text-xl font-semibold text-brand-800 mb-1">Senior Software Engineer</h3>
-                            <p class="text-brand-600 mb-2">Google India</p>
-                            <div class="flex flex-wrap gap-2 mt-3">
-                                <span class="inline-block bg-brand-100 text-brand-700 text-xs px-3 py-1 rounded-full font-medium"><i class="fa-solid fa-clock mr-1"></i>2021 - Present</span>
-                                <span class="inline-block bg-green-50 text-green-700 border border-green-200 text-xs px-3 py-1 rounded-full font-medium">Well Settled</span>
-                            </div>
-                        </div>
-                        <div class="glass-card p-6 rounded-2xl border-l-4 border-l-brand-400">
-                            <h3 class="text-xl font-semibold text-brand-800 mb-1">Software Developer</h3>
-                            <p class="text-brand-600 mb-2">Tech Innovators Start-up</p>
-                            <span class="inline-block bg-brand-100 text-brand-700 text-xs px-3 py-1 rounded-full font-medium"><i class="fa-solid fa-clock mr-1"></i>2020 - 2021</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Family Background -->
-    <section id="family" class="py-20 bg-white print-break">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 fade-in">
-                <h2 class="font-serif text-3xl md:text-4xl text-brand-900 mb-4 relative inline-block">
-                    Family Background
-                    <span class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-12 h-1 bg-brand-400 rounded-full"></span>
-                </h2>
-                <p class="text-brand-600 mt-6 max-w-2xl mx-auto text-lg">
-                    Ours is a well-educated, upper-middle-class nuclear family with moderate traditional values based in Delhi for the last 30 years.
-                </p>
-            </div>
-
-            <div class="glass-card p-8 rounded-3xl fade-in delay-100">
-                <ul class="space-y-6">
-                    <li class="flex items-start gap-4 pb-6 border-b border-brand-100">
-                        <div class="bg-brand-50 p-3 rounded-xl text-brand-500 mt-1">
-                            <i class="fa-solid fa-user-tie text-xl"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-semibold text-brand-800">Father</h4>
-                            <p class="text-brand-600 mt-1">Mr. Rakesh Sharma</p>
-                            <p class="text-brand-500 text-sm mt-1">Retired as a Chief Manager from State Bank of India (SBI).</p>
-                        </div>
-                    </li>
-                    
-                    <li class="flex items-start gap-4 pb-6 border-b border-brand-100">
-                        <div class="bg-brand-50 p-3 rounded-xl text-brand-500 mt-1">
-                            <i class="fa-solid fa-user-large text-xl"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-semibold text-brand-800">Mother</h4>
-                            <p class="text-brand-600 mt-1">Mrs. Sunita Sharma</p>
-                            <p class="text-brand-500 text-sm mt-1">Homemaker. Heart of the family, previously worked as a high school teacher.</p>
-                        </div>
-                    </li>
-
-                    <li class="flex items-start gap-4 pb-6 border-b border-brand-100">
-                        <div class="bg-brand-50 p-3 rounded-xl text-brand-500 mt-1">
-                            <i class="fa-solid fa-users text-xl"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-semibold text-brand-800">Siblings</h4>
-                            <p class="text-brand-600 mt-1">One Elder Sister</p>
-                            <p class="text-brand-500 text-sm mt-1">Married and settled in Bangalore. Working as an HR Manager. Brother-in-law is a CA.</p>
-                        </div>
-                    </li>
-
-                    <li class="flex items-start gap-4">
-                        <div class="bg-brand-50 p-3 rounded-xl text-brand-500 mt-1">
-                            <i class="fa-solid fa-house text-xl"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-semibold text-brand-800">Roots & Property</h4>
-                            <p class="text-brand-600 mt-1">Originally from Dehradun, Uttarakhand.</p>
-                            <p class="text-brand-500 text-sm mt-1">Own an independent house in South Delhi.</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Lifestyle & Interests -->
-    <section class="py-16 bg-brand-900 text-white relative overflow-hidden">
-        <!-- Abstract shapes -->
-        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-brand-800 blur-3xl opacity-50"></div>
-        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-brand-700 blur-3xl opacity-30"></div>
-
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-12 fade-in">
-                <h2 class="font-serif text-3xl md:text-4xl mb-4 relative inline-block text-brand-50">
-                    Lifestyle & Interests
-                </h2>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center fade-in delay-100">
-                <div class="bg-brand-800/50 backdrop-blur-sm p-6 rounded-2xl hover:bg-brand-700/50 transition-colors border border-brand-700">
-                    <i class="fa-solid fa-plane-departure text-3xl text-brand-300 mb-4"></i>
-                    <h3 class="font-medium text-lg">Traveling</h3>
-                    <p class="text-brand-200 text-sm mt-2">Love exploring hills and local cuisines.</p>
-                </div>
-                
-                <div class="bg-brand-800/50 backdrop-blur-sm p-6 rounded-2xl hover:bg-brand-700/50 transition-colors border border-brand-700">
-                    <i class="fa-solid fa-camera text-3xl text-brand-300 mb-4"></i>
-                    <h3 class="font-medium text-lg">Photography</h3>
-                    <p class="text-brand-200 text-sm mt-2">Capturing street life and landscapes.</p>
-                </div>
-
-                <div class="bg-brand-800/50 backdrop-blur-sm p-6 rounded-2xl hover:bg-brand-700/50 transition-colors border border-brand-700">
-                    <i class="fa-solid fa-dumbbell text-3xl text-brand-300 mb-4"></i>
-                    <h3 class="font-medium text-lg">Fitness</h3>
-                    <p class="text-brand-200 text-sm mt-2">Regular gym-goer, weekend trekking.</p>
-                </div>
-
-                <div class="bg-brand-800/50 backdrop-blur-sm p-6 rounded-2xl hover:bg-brand-700/50 transition-colors border border-brand-700">
-                    <i class="fa-solid fa-book-open text-3xl text-brand-300 mb-4"></i>
-                    <h3 class="font-medium text-lg">Reading</h3>
-                    <p class="text-brand-200 text-sm mt-2">Tech blogs, history, and fiction.</p>
-                </div>
-            </div>
-            
-            <div class="mt-12 text-center max-w-2xl mx-auto fade-in delay-200">
-                <p class="text-brand-200 italic">
-                    "I believe in living a balanced life. Weekdays are dedicated to building a fulfilling career, while weekends are for family, fitness, and unwinding with a good movie or cooking a new recipe."
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Partner Preferences -->
-    <section id="preferences" class="py-20 bg-brand-50 border-y border-brand-100 print-break">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row gap-8 items-center glass-card p-8 md:p-12 rounded-3xl fade-in">
-                <div class="w-full md:w-1/3 text-center md:text-left">
-                    <div class="w-20 h-20 bg-brand-100 rounded-full flex items-center justify-center mx-auto md:mx-0 mb-6">
-                        <i class="fa-solid fa-heart text-3xl text-brand-500"></i>
-                    </div>
-                    <h2 class="font-serif text-3xl text-brand-900 mb-4">What I'm Looking For</h2>
-                    <p class="text-brand-600">A partner in true sense—a friend first, with whom I can share mutual respect and understanding.</p>
-                </div>
-                
-                <div class="w-full md:w-2/3 border-t md:border-t-0 md:border-l border-brand-200 pt-6 md:pt-0 md:pl-10 space-y-4">
-                    <div class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-green-600 mt-1"></i>
-                        <p class="text-brand-800"><strong>Age:</strong> 24 to 28 Years</p>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-green-600 mt-1"></i>
-                        <p class="text-brand-800"><strong>Height:</strong> 5'3" to 5'8"</p>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-green-600 mt-1"></i>
-                        <p class="text-brand-800"><strong>Education/Career:</strong> Well-educated. Professionally working is appreciated but entirely her choice.</p>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-green-600 mt-1"></i>
-                        <p class="text-brand-800"><strong>Traits:</strong> Caring, respectful towards elders, open-minded, and possessing a good sense of humor.</p>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-green-600 mt-1"></i>
-                        <p class="text-brand-800"><strong>Background:</strong> Belongs to a cultured family. Caste is no bar for the right match.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-white no-print">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="font-serif text-3xl md:text-4xl text-brand-900 mb-4 fade-in">Let's Connect</h2>
-            <p class="text-brand-600 mb-10 max-w-xl mx-auto fade-in">If you feel our profiles resonate and you would like to take this forward, please feel free to reach out. We would be happy to exchange photos and horoscopes.</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left fade-in delay-100">
-                <!-- Direct Contact Info -->
-                <div class="glass-card p-8 rounded-2xl bg-brand-50">
-                    <h3 class="font-serif text-2xl text-brand-900 mb-6">Contact Details</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-brand-500 shadow-sm">
-                                <i class="fa-solid fa-phone"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm text-brand-500 font-medium">Father (Mr. Rakesh)</p>
-                                <p class="font-medium text-brand-800">+91 98765 43210</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-brand-500 shadow-sm">
-                                <i class="fa-brands fa-whatsapp text-lg"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm text-brand-500 font-medium">Self (WhatsApp only)</p>
-                                <p class="font-medium text-brand-800">+91 91234 56789</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-brand-500 shadow-sm">
-                                <i class="fa-solid fa-envelope"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm text-brand-500 font-medium">Email Address</p>
-                                <p class="font-medium text-brand-800">rohan.sharma.matrimony@example.com</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Expression of Interest Form (UI Only) -->
-                <div class="glass-card p-8 rounded-2xl contact-form">
-                    <h3 class="font-serif text-2xl text-brand-900 mb-6">Send an Interest</h3>
-                    <form id="interestForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-brand-700 mb-1">Your Name</label>
-                            <input type="text" id="name" required class="w-full px-4 py-2 rounded-lg border border-brand-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all">
-                        </div>
-                        <div>
-                            <label for="contact" class="block text-sm font-medium text-brand-700 mb-1">Contact Number / Email</label>
-                            <input type="text" id="contact" required class="w-full px-4 py-2 rounded-lg border border-brand-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all">
-                        </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-brand-700 mb-1">Message (Optional)</label>
-                            <textarea id="message" rows="3" class="w-full px-4 py-2 rounded-lg border border-brand-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all" placeholder="Link to biodata or short intro..."></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-medium py-3 rounded-lg transition-all shadow-md">
-                            Send Message
-                        </button>
-                        <p id="formSuccess" class="hidden text-green-600 text-sm text-center mt-2 font-medium">Message sent successfully! We will connect soon.</p>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-brand-900 text-brand-300 py-8 text-center border-t border-brand-800">
-        <div class="max-w-6xl mx-auto px-4">
-            <i class="fa-solid fa-hands-praying text-2xl mb-4 text-brand-500"></i>
-            <p class="mb-2 text-sm">Created with sincere intentions.</p>
-            <p class="text-xs text-brand-500">&copy; <span id="year"></span> Rohan Sharma. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Set current year in footer
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Mobile Menu Toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-
-        // Close mobile menu on link click
-        menu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
-            });
-        });
-
-        // Sticky Navbar effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                navbar.classList.add('shadow-md');
-                navbar.classList.replace('bg-white/80', 'bg-white/95');
-            } else {
-                navbar.classList.remove('shadow-md');
-                navbar.classList.replace('bg-white/95', 'bg-white/80');
-            }
-        });
-
-        // Intersection Observer for Scroll Animations
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                    observer.unobserve(entry.target); // Run once
-                }
-            });
-        }, observerOptions);
-
-        // Pause animations initially
-        document.querySelectorAll('.fade-in').forEach((el) => {
-            el.style.animationPlayState = 'paused';
-            observer.observe(el);
-        });
-
-        // Form Submit Handler
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            const btn = event.target.querySelector('button[type="submit"]');
-            const successMsg = document.getElementById('formSuccess');
-            
-            // Visual feedback
-            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Sending...';
-            btn.disabled = true;
-            btn.classList.replace('bg-brand-500', 'bg-brand-400');
-
-            // Simulate API call
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fa-solid fa-check"></i> Sent';
-                btn.classList.replace('bg-brand-400', 'bg-green-500');
-                successMsg.classList.remove('hidden');
-                event.target.reset();
-                
-                setTimeout(() => {
-                    btn.innerHTML = 'Send Message';
-                    btn.disabled = false;
-                    btn.classList.replace('bg-green-500', 'bg-brand-500');
-                    successMsg.classList.add('hidden');
-                }, 4000);
-            }, 1500);
-        }
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
